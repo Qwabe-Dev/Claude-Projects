@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Andile Gumede — Customer Success & Operations Professional. UK B2B account management, SLA improvement, team leadership. Open to remote, hybrid, and on-site roles." />
+  <meta name="author" content="Andile Gumede" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Andile Gumede — Customer Success & Operations" />
+  <meta property="og:description" content="Turning underperforming client operations into measurable results. SLA 85%→97%. ~£300k revenue contribution." />
+  <meta property="og:type" content="website" />
+
+  <title>Andile Gumede — Customer Success & Operations Professional</title>
+
+  <!-- Favicon (inline SVG: blue circle with white "A") -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232563EB'/%3E%3Ctext x='50' y='66' font-family='Inter,sans-serif' font-size='56' font-weight='700' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__logo" aria-label="Andile Gumede — home">
+        <span class="nav__logo-mark">A</span>
+        <span class="nav__logo-text">Andile Gumede</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="#projects" class="nav__link">Experience</a>
+        <a href="#results" class="nav__link">Results</a>
+        <a href="#contact" class="nav__link">Contact</a>
+        <a href="src/assets/Andile_Gumede_CV_2026.pdf" class="nav__cv btn btn--small" download>
+          <i class="fa-solid fa-download" aria-hidden="true"></i> CV
+        </a>
+      </nav>
+
+      <div class="nav__controls">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button id="menuToggle" class="icon-btn nav__menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content" data-aos="fade-up">
+        <span class="badge badge--available">
+          <span class="badge__dot" aria-hidden="true"></span>
+          Open to opportunities · Remote, Hybrid &amp; On-site
+        </span>
+
+        <h1 class="hero__title">
+          Hi, I'm Andile <span class="wave" aria-hidden="true">👋</span><br />
+          I'm a <span class="typing" id="typing" aria-live="polite"></span><span class="caret" aria-hidden="true">|</span>
+        </h1>
+
+        <p class="hero__tagline">
+          I turn underperforming client operations into measurable results — lifting SLA from
+          <strong>85% to 97%</strong>, cutting response times from a week to half a day, and driving nearly
+          <strong>£300,000</strong> in revenue growth.
+        </p>
+
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--primary">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            View My Work
+          </a>
+          <a href="src/assets/Andile_Gumede_CV_2026.pdf" class="btn btn--ghost" download>
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+            Download CV
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Kempton Park, Gauteng · South Africa
+          <span class="hero__meta-sep" aria-hidden="true">·</span>
+          <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          Working with UK accounts across time zones
+        </div>
+      </div>
+
+      <div class="hero__photo" data-aos="fade-left" data-aos-delay="150">
+        <div class="hero__photo-frame">
+          <img src="src/assets/images/profile.jpeg" alt="Portrait of Andile Gumede" loading="eager" />
+        </div>
+        <div class="hero__photo-glow" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Quick stat strip -->
+    <div class="container">
+      <div class="stat-strip" data-aos="fade-up" data-aos-delay="250">
+        <div class="stat">
+          <div class="stat__value" data-counter="97" data-suffix="%">0%</div>
+          <div class="stat__label">SLA achieved (from 85%)</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value" data-counter="450" data-prefix="~">0</div>
+          <div class="stat__label">Operators onboarded</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value" data-counter="300" data-prefix="£" data-suffix="k">£0k</div>
+          <div class="stat__label">Revenue contribution</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value" data-counter="86293">0</div>
+          <div class="stat__label">Contacts managed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <div class="section__head" data-aos="fade-up">
+        <span class="eyebrow">About me</span>
+        <h2 class="section__title">From the phones to the playbook.</h2>
+      </div>
+
+      <div class="about">
+        <div class="about__copy" data-aos="fade-up" data-aos-delay="100">
+          <p>
+            I'm a client-facing operations professional with <strong>2+ years managing UK-based B2B accounts</strong>,
+            owning service delivery, escalations, and customer outcomes. I started as a call centre agent and worked my
+            way up to manager — not by waiting, but by fixing things.
+          </p>
+          <p>
+            I've rebuilt workflows in <strong>AWS Connect</strong>, rescued relationships with clients on the edge of
+            churning, and onboarded nearly <strong>450 operators</strong> from scratch. I believe great customer success
+            is built on three things: <em>data, consistency, and people</em>.
+          </p>
+          <p>
+            I'm currently studying <strong>Data Analytics</strong> at Eduvos to sharpen the analytical side of what I
+            already do — turning what I see in dashboards into decisions that move the numbers.
+          </p>
+
+          <div class="about__points">
+            <div class="about__point">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><strong>Remote-ready.</strong> Daily delivery to UK clients from South Africa — async-first, time-zone aware.</span>
+            </div>
+            <div class="about__point">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><strong>Office-ready.</strong> Floor-managed live operations, coached teams in person, and built training programmes face-to-face.</span>
+            </div>
+            <div class="about__point">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><strong>Outcomes over activity.</strong> If it doesn't move SLA, response time, or revenue — it's noise.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="about__card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="about__card-title">At a glance</h3>
+          <ul class="about__list">
+            <li><i class="fa-solid fa-briefcase" aria-hidden="true"></i> 3+ years in BPO / customer operations</li>
+            <li><i class="fa-solid fa-people-group" aria-hidden="true"></i> Led teams of agents servicing UK B2B clients</li>
+            <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i> SLA, retention &amp; revenue accountability</li>
+            <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Studying Data Analytics (Eduvos, 2027)</li>
+            <li><i class="fa-solid fa-language" aria-hidden="true"></i> Native English · UK-account fluent</li>
+            <li><i class="fa-solid fa-clock" aria-hidden="true"></i> Available SAST · UK overlap daily</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--block">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Get in touch
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section__head" data-aos="fade-up">
+        <span class="eyebrow">Skills &amp; tools</span>
+        <h2 class="section__title">What I bring to the desk.</h2>
+        <p class="section__sub">Top capabilities first, then the tools I run them on.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card skill-card--feature" data-aos="fade-up">
+          <i class="fa-solid fa-handshake skill-card__icon" aria-hidden="true"></i>
+          <h3>Client Relationship Management</h3>
+          <p>Full account ownership — from kickoff to QBR. Translating client priorities into operational targets.</p>
+        </div>
+        <div class="skill-card skill-card--feature" data-aos="fade-up" data-aos-delay="80">
+          <i class="fa-solid fa-gauge-high skill-card__icon" aria-hidden="true"></i>
+          <h3>Customer Success &amp; SLA</h3>
+          <p>Building the reporting cadence and accountability that keeps SLAs in the green — and keeps clients renewing.</p>
+        </div>
+        <div class="skill-card skill-card--feature" data-aos="fade-up" data-aos-delay="160">
+          <i class="fa-solid fa-users-gear skill-card__icon" aria-hidden="true"></i>
+          <h3>Team Leadership &amp; Coaching</h3>
+          <p>Hiring, onboarding, 1:1s, QA, and performance plans. Agents who know what good looks like — and how to hit it.</p>
+        </div>
+        <div class="skill-card skill-card--feature" data-aos="fade-up" data-aos-delay="240">
+          <i class="fa-solid fa-diagram-project skill-card__icon" aria-hidden="true"></i>
+          <h3>Workflow Optimisation</h3>
+          <p>Mapping every touchpoint, killing the bottlenecks, automating where it pays back. AWS Connect, queues, IVR.</p>
+        </div>
+      </div>
+
+      <div class="skills-cluster" data-aos="fade-up" data-aos-delay="120">
+        <div class="skills-cluster__col">
+          <h4 class="skills-cluster__title"><i class="fa-solid fa-toolbox" aria-hidden="true"></i> Tools &amp; platforms</h4>
+          <div class="tag-cloud">
+            <span class="tag">Salesforce</span>
+            <span class="tag">Zendesk</span>
+            <span class="tag">AWS Connect</span>
+            <span class="tag">RingCentral</span>
+            <span class="tag">Keyloop DMS</span>
+            <span class="tag">HubSpot-ready</span>
+            <span class="tag">MS Excel</span>
+            <span class="tag">MS Word</span>
+            <span class="tag">Outlook</span>
+          </div>
+        </div>
+
+        <div class="skills-cluster__col">
+          <h4 class="skills-cluster__title"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Operational strengths</h4>
+          <div class="tag-cloud">
+            <span class="tag tag--soft">Customer Onboarding</span>
+            <span class="tag tag--soft">Training &amp; Adoption</span>
+            <span class="tag tag--soft">Retention</span>
+            <span class="tag tag--soft">Escalation Management</span>
+            <span class="tag tag--soft">Complaint Resolution</span>
+            <span class="tag tag--soft">KPI Reporting</span>
+            <span class="tag tag--soft">Stakeholder Comms</span>
+            <span class="tag tag--soft">Data-Driven Engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="skills-footnote" data-aos="fade-up">
+        <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+        Currently studying <strong>Higher Certificate in Computing: Data Analytics</strong> — Eduvos, expected Feb 2027.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section section--alt" id="projects">
+    <div class="container">
+      <div class="section__head" data-aos="fade-up">
+        <span class="eyebrow">Experience</span>
+        <h2 class="section__title">Selected work.</h2>
+        <p class="section__sub">Each entry is a real account, a real KPI, a real outcome.</p>
+      </div>
+
+      <div class="filters" data-aos="fade-up" role="tablist" aria-label="Filter projects">
+        <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter" data-filter="leadership" role="tab" aria-selected="false">Leadership</button>
+        <button class="filter" data-filter="ops" role="tab" aria-selected="false">Operations</button>
+        <button class="filter" data-filter="cs" role="tab" aria-selected="false">Customer Success</button>
+      </div>
+
+      <div class="projects">
+        <article class="project" data-tags="leadership ops cs" data-aos="fade-up">
+          <div class="project__media project__media--gradient project__media--1" aria-hidden="true">
+            <div class="project__badge">Featured</div>
+            <div class="project__media-stats">
+              <div><strong>97%</strong><span>SLA</span></div>
+              <div><strong>0.5d</strong><span>Response</span></div>
+              <div><strong>99%</strong><span>Answer rate</span></div>
+            </div>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__company">Afrishore BPO · WeMove UK</span>
+              <span class="project__dates">Mar 2025 – Present</span>
+            </div>
+            <h3 class="project__title">UK B2B Account Recovery — Call Centre Manager</h3>
+            <p class="project__desc">
+              Took ownership of an underperforming UK B2B client account on the verge of churn. Rebuilt SLA from
+              <strong>85% → 97%</strong>, cut response times from <strong>7+ days to 0.5 days</strong>, dropped
+              queue time from 18s to 10s, and held a 99% answer rate with 0% abandonment.
+            </p>
+            <div class="project__tags">
+              <span class="tag tag--xs">AWS Connect</span>
+              <span class="tag tag--xs">Zendesk</span>
+              <span class="tag tag--xs">SLA Management</span>
+              <span class="tag tag--xs">Team Leadership</span>
+              <span class="tag tag--xs">Customer Retention</span>
+            </div>
+            <div class="project__links">
+              <a href="docs/kpi_dashboard.html" class="link-arrow" target="_blank" rel="noopener">
+                See the KPI dashboard <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="ops cs" data-aos="fade-up" data-aos-delay="80">
+          <div class="project__media project__media--gradient project__media--2" aria-hidden="true">
+            <div class="project__media-stats">
+              <div><strong>~450</strong><span>Operators</span></div>
+              <div><strong>£300k</strong><span>Revenue</span></div>
+              <div><strong>0→1</strong><span>Launch</span></div>
+            </div>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__company">Afrishore BPO · DrivenConnect</span>
+              <span class="project__dates">Oct 2024 – Present</span>
+            </div>
+            <h3 class="project__title">DrivenConnect Launch &amp; Operator Network</h3>
+            <p class="project__desc">
+              Owned the end-to-end launch of DrivenConnect, building the operator supply network from zero. Sourced,
+              vetted, and onboarded ~450 coach operators across the UK, contributing to nearly <strong>£300,000</strong>
+              in revenue growth through supplier acquisition and ongoing account coordination.
+            </p>
+            <div class="project__tags">
+              <span class="tag tag--xs">Project Management</span>
+              <span class="tag tag--xs">Onboarding</span>
+              <span class="tag tag--xs">Stakeholder Mgmt</span>
+              <span class="tag tag--xs">Revenue Growth</span>
+              <span class="tag tag--xs">CRM</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="leadership cs" data-aos="fade-up" data-aos-delay="160">
+          <div class="project__media project__media--gradient project__media--3" aria-hidden="true">
+            <div class="project__media-stats">
+              <div><strong>QA</strong><span>Framework</span></div>
+              <div><strong>KPI</strong><span>Tracking</span></div>
+              <div><strong>1:1s</strong><span>Coaching</span></div>
+            </div>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__company">Afrishore BPO</span>
+              <span class="project__dates">Jun 2024 – Mar 2025</span>
+            </div>
+            <h3 class="project__title">Team Leadership &amp; Agent Development</h3>
+            <p class="project__desc">
+              Led a team of agents servicing a UK B2B client. Built and delivered onboarding and training programmes,
+              monitored daily KPIs, and acted as escalation point for Zendesk cases. Directly prepared the ground for
+              the SLA improvements I later delivered as manager.
+            </p>
+            <div class="project__tags">
+              <span class="tag tag--xs">Team Leadership</span>
+              <span class="tag tag--xs">Training</span>
+              <span class="tag tag--xs">Zendesk</span>
+              <span class="tag tag--xs">KPI Monitoring</span>
+              <span class="tag tag--xs">QA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="cs ops" data-aos="fade-up" data-aos-delay="240">
+          <div class="project__media project__media--gradient project__media--4" aria-hidden="true">
+            <div class="project__media-stats">
+              <div><strong>BMW</strong><span>Park Royal</span></div>
+              <div><strong>BMW</strong><span>Battersea</span></div>
+              <div><strong>BMW</strong><span>Motorrad</span></div>
+            </div>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__company">Afrishore BPO · BMW UK Dealerships</span>
+              <span class="project__dates">Jun 2023 – Oct 2023</span>
+            </div>
+            <h3 class="project__title">BMW UK Dealership Support</h3>
+            <p class="project__desc">
+              Supported BMW Park Royal, BMW Battersea, and BMW Motorrad through the Keyloop CRM platform. Managed
+              service quotations, bookings, and customer records to premium brand standards.
+            </p>
+            <div class="project__tags">
+              <span class="tag tag--xs">Keyloop DMS</span>
+              <span class="tag tag--xs">CRM</span>
+              <span class="tag tag--xs">Customer Service</span>
+              <span class="tag tag--xs">Premium Brand</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS / KPI EMBED ===== -->
+  <section class="section" id="results">
+    <div class="container">
+      <div class="section__head" data-aos="fade-up">
+        <span class="eyebrow">Results</span>
+        <h2 class="section__title">The numbers, in one place.</h2>
+        <p class="section__sub">Every figure on this page is taken from the live KPI dashboard I run.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card" data-aos="fade-up">
+          <div class="result-card__label">SLA performance</div>
+          <div class="result-card__value">85% <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> 97%</div>
+          <div class="result-card__note">Sustained over 12+ months on UK B2B account.</div>
+        </div>
+        <div class="result-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="result-card__label">Response time</div>
+          <div class="result-card__value">7+ days <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> 0.5 days</div>
+          <div class="result-card__note">~14× faster first-touch resolution.</div>
+        </div>
+        <div class="result-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="result-card__label">Queue time</div>
+          <div class="result-card__value">18s <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> 10s</div>
+          <div class="result-card__note">Re-routed via AWS Connect tuning.</div>
+        </div>
+        <div class="result-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="result-card__label">Answer rate</div>
+          <div class="result-card__value">99%</div>
+          <div class="result-card__note">0% abandonment across 86,293 contacts.</div>
+        </div>
+        <div class="result-card" data-aos="fade-up" data-aos-delay="320">
+          <div class="result-card__label">Operators onboarded</div>
+          <div class="result-card__value">~450</div>
+          <div class="result-card__note">DrivenConnect supply network, built from zero.</div>
+        </div>
+        <div class="result-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="result-card__label">Revenue contribution</div>
+          <div class="result-card__value">~£300k</div>
+          <div class="result-card__note">Supplier acquisition + account coordination.</div>
+        </div>
+      </div>
+
+      <div class="results-cta" data-aos="fade-up">
+        <a href="docs/kpi_dashboard.html" class="btn btn--primary" target="_blank" rel="noopener">
+          <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+          Open the full KPI dashboard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="contact">
+        <div class="contact__intro" data-aos="fade-up">
+          <span class="eyebrow">Contact</span>
+          <h2 class="section__title">Let's talk.</h2>
+          <p>
+            I'm open to <strong>remote, hybrid, and on-site</strong> roles in customer success, account management,
+            operations, or team leadership. If you have a client account that needs steadying — or a team that needs
+            building — I'd love to hear from you.
+          </p>
+
+          <ul class="contact__list">
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:ahgumede1@gmail.com">ahgumede1@gmail.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <a href="tel:+27793460286">+27 (79) 346-0286</a>
+            </li>
+            <li>
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              <a href="https://www.linkedin.com/in/andile-gumede-bb46a4197/" target="_blank" rel="noopener">linkedin.com/in/andile-gumede</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Kempton Park, Gauteng · South Africa (SAST · GMT+2)
+            </li>
+          </ul>
+
+          <div class="contact__socials">
+            <a href="mailto:ahgumede1@gmail.com" class="social" aria-label="Email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/andile-gumede-bb46a4197/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a href="src/assets/Andile_Gumede_CV_2026.pdf" download class="social" aria-label="Download CV">
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <form
+          class="contact__form"
+          id="contactForm"
+          action="https://formspree.io/f/xredlwpw"
+          method="POST"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          novalidate
+        >
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your full name" />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+          </div>
+
+          <div class="form-row">
+            <label for="company">Company <span class="form-row__opt">(optional)</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Where you're writing from" />
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="A line or two about the role or opportunity"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block" id="submitBtn">
+            <span class="btn__label"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send message</span>
+            <span class="btn__sending" aria-hidden="true"><i class="fa-solid fa-circle-notch fa-spin"></i> Sending…</span>
+          </button>
+
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Andile Gumede. Built from scratch — no templates.</p>
+      <div class="footer__links">
+        <a href="#hero">Top</a>
+        <a href="mailto:ahgumede1@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/andile-gumede-bb46a4197/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="src/assets/Andile_Gumede_CV_2026.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- AOS script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Site script -->
+  <script src="src/js/main.js" defer></script>
+</body>
+</html>

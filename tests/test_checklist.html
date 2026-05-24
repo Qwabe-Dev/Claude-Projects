@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio — Test Checklist</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; background: #f9fafb; color: #111; }
+    h1 { font-size: 22px; margin-bottom: 4px; }
+    p.sub { color: #6b7280; font-size: 13px; margin-bottom: 32px; }
+    .section { margin-bottom: 28px; }
+    .section h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-bottom: 12px; }
+    .item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: white; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+    .item:hover { border-color: #2563EB; }
+    .item.done { background: #f0fdf4; border-color: #86efac; }
+    .item input[type=checkbox] { width: 16px; height: 16px; accent-color: #2563EB; flex-shrink: 0; cursor: pointer; }
+    .item label { font-size: 13px; cursor: pointer; flex: 1; }
+    .item.done label { color: #16a34a; text-decoration: line-through; }
+    .progress-bar-wrap { background: #e5e7eb; border-radius: 99px; height: 8px; margin-bottom: 24px; overflow: hidden; }
+    .progress-bar { background: #2563EB; height: 100%; border-radius: 99px; transition: width 0.3s; }
+    .progress-text { font-size: 12px; color: #6b7280; margin-bottom: 8px; }
+    .reset { display: inline-block; margin-top: 20px; padding: 8px 16px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Portfolio Test Checklist</h1>
+  <p class="sub">Run through before going live. Click items to check them off.</p>
+
+  <div class="progress-text" id="progress-text">0 / 0 complete</div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+
+  <div class="section">
+    <h2>Navigation</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>All nav links scroll to correct section</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Nav stays fixed/sticky on scroll</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Active nav item highlights on scroll</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Mobile hamburger menu opens and closes</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Hero Section</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Name and title display correctly</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Typing animation works (if enabled)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>"View My Work" button scrolls to projects</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>"Download CV" button downloads PDF (if added)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Profile photo loads (if added)</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Projects Section</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>All project cards render with correct info</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Project images/screenshots load</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Project links open correctly (new tab)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Card hover effects work</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Contact Form</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Form fields accept input</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Form validation catches empty fields</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Form submits and shows success message</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Email received in inbox after test submit</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Social links (LinkedIn, GitHub, etc.) open correctly</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Responsive Design</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Looks good on mobile (375px)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Looks good on tablet (768px)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Looks good on desktop (1280px+)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>No horizontal scroll on mobile</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Features & Polish</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Scroll animations (AOS) trigger correctly</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Dark/light mode toggle works</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Back-to-top button appears on scroll</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Scroll progress bar moves correctly</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>No console errors (open DevTools → Console)</label></div>
+  </div>
+
+  <div class="section">
+    <h2>Performance & SEO</h2>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Page loads in under 3 seconds</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Favicon shows in browser tab</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Page title is your name (not "Untitled")</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>Meta description set (shows in Google preview)</label></div>
+    <div class="item" onclick="toggle(this)"><input type="checkbox"><label>No broken images (no grey placeholder boxes)</label></div>
+  </div>
+
+  <div onclick="resetAll()" class="reset">↺ Reset checklist</div>
+
+  <script>
+    function toggle(el) {
+      const cb = el.querySelector('input');
+      cb.checked = !cb.checked;
+      el.classList.toggle('done', cb.checked);
+      updateProgress();
+    }
+    function updateProgress() {
+      const all = document.querySelectorAll('.item input');
+      const done = document.querySelectorAll('.item input:checked');
+      const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = done.length + ' / ' + all.length + ' complete';
+    }
+    function resetAll() {
+      document.querySelectorAll('.item').forEach(el => {
+        el.classList.remove('done');
+        el.querySelector('input').checked = false;
+      });
+      updateProgress();
+    }
+    updateProgress();
+  </script>
+</body>
+</html>

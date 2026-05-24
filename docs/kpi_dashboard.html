@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andile Gumede — KPI Performance Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #EFF6FF;
+    --blue-mid: #BFDBFE;
+    --green: #10B981;
+    --green-light: #ECFDF5;
+    --amber: #F59E0B;
+    --amber-light: #FFFBEB;
+    --text: #111827;
+    --text-2: #4B5563;
+    --text-3: #9CA3AF;
+    --bg: #F9FAFB;
+    --card: #FFFFFF;
+    --border: #E5E7EB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-left h1 { font-size: 20px; font-weight: 800; }
+  .header-left p { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+  .header-badge {
+    background: var(--green-light);
+    border: 1px solid #6EE7B7;
+    color: var(--green);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* Campaign strip */
+  .campaign-strip {
+    background: var(--blue);
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    gap: 40px;
+    font-size: 12px;
+  }
+  .campaign-strip span { opacity: 0.85; }
+  .campaign-strip strong { opacity: 1; font-weight: 700; }
+
+  /* Main layout */
+  .main { padding: 32px 40px; max-width: 1200px; margin: 0 auto; }
+
+  /* Section title */
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+  .section-title:first-child { margin-top: 0; }
+
+  /* Progress cards row */
+  .progress-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .progress-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .progress-card.blue::before { background: var(--blue); }
+  .progress-card.green::before { background: var(--green); }
+  .progress-card.amber::before { background: var(--amber); }
+
+  .progress-card .label { font-size: 11px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .progress-card .from-to { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .progress-card .val-from { font-size: 22px; font-weight: 800; color: var(--text-3); text-decoration: line-through; }
+  .progress-card .arrow { font-size: 16px; color: var(--green); }
+  .progress-card .val-to { font-size: 28px; font-weight: 900; color: var(--text); }
+  .progress-card .val-to.blue { color: var(--blue); }
+  .progress-card .val-to.green { color: var(--green); }
+  .progress-card .improvement {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--green-light);
+    color: var(--green);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .progress-card .desc { font-size: 11px; color: var(--text-2); margin-top: 8px; line-height: 1.5; }
+
+  /* Stat cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .s-icon { font-size: 24px; margin-bottom: 8px; }
+  .stat-card .s-num { font-size: 30px; font-weight: 900; color: var(--text); line-height: 1; }
+  .stat-card .s-unit { font-size: 13px; font-weight: 600; color: var(--blue); }
+  .stat-card .s-label { font-size: 11px; color: var(--text-2); margin-top: 6px; }
+
+  /* Chart cards */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .chart-card p { font-size: 11px; color: var(--text-3); margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 220px; }
+
+  /* Monthly table */
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 20px;
+  }
+  .table-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .table-card p { font-size: 11px; color: var(--text-3); margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-3); border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--bg); }
+  tr:hover td { background: var(--bg); }
+  .trend-up { color: var(--green); font-weight: 700; }
+  .trend-neutral { color: var(--text-3); }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .pill.green { background: var(--green-light); color: var(--green); }
+  .pill.blue { background: var(--blue-light); color: var(--blue); }
+  .pill.amber { background: var(--amber-light); color: var(--amber); }
+
+  /* Bar visual inside table */
+  .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .mini-bar { height: 6px; border-radius: 3px; background: var(--blue); }
+  .bar-num { font-size: 12px; font-weight: 700; min-width: 40px; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 32px; font-size: 11px; color: var(--text-3); }
+
+  @media (max-width: 900px) {
+    .progress-grid, .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid { grid-template-columns: 1fr; }
+    .main { padding: 20px; }
+    .header { padding: 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .campaign-strip { padding: 10px 20px; flex-wrap: wrap; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Andile Gumede — KPI Performance Dashboard</h1>
+    <p>WeMove UK | Afrishore BPO | Call Centre Manager</p>
+  </div>
+  <div class="header-badge">✦ Verified Results</div>
+</div>
+
+<div class="campaign-strip">
+  <span>📅 Campaign: <strong>Jun 2025 – May 2026</strong></span>
+  <span>🏢 Client: <strong>WeMove UK (B2B)</strong></span>
+  <span>📞 Total Contacts: <strong>86,293</strong></span>
+  <span>👥 Team Size: <strong>9 Agents</strong></span>
+  <span>🌍 Market: <strong>United Kingdom</strong></span>
+</div>
+
+<div class="main">
+
+  <!-- Progress improvements -->
+  <div class="section-title">Measurable Improvements Driven</div>
+  <div class="progress-grid">
+
+    <div class="progress-card blue">
+      <div class="label">SLA Performance</div>
+      <div class="from-to">
+        <div class="val-from">85%</div>
+        <div class="arrow">→</div>
+        <div class="val-to blue">97%</div>
+      </div>
+      <div class="improvement">↑ +12 percentage points</div>
+      <div class="desc">SLA compliance within 60 seconds. Achieved through workflow optimisation and AWS Connect dialer reconfiguration.</div>
+    </div>
+
+    <div class="progress-card green">
+      <div class="label">Response Time</div>
+      <div class="from-to">
+        <div class="val-from">7d</div>
+        <div class="arrow">→</div>
+        <div class="val-to green">0.5d</div>
+      </div>
+      <div class="improvement">↑ 14× faster</div>
+      <div class="desc">Average Zendesk response time reduced from over 1 week to half a day. Complaint resolution cut to 1.5 days.</div>
+    </div>
+
+    <div class="progress-card blue">
+      <div class="label">Queue Wait Time</div>
+      <div class="from-to">
+        <div class="val-from">18s</div>
+        <div class="arrow">→</div>
+        <div class="val-to blue">10s</div>
+      </div>
+      <div class="improvement">↑ 44% faster</div>
+      <div class="desc">Average queue time halved. Improved customer access speed and first-contact experience for the client's end users.</div>
+    </div>
+
+    <div class="progress-card green">
+      <div class="label">Answer Rate</div>
+      <div class="from-to">
+        <div class="val-from">–</div>
+        <div class="arrow"></div>
+        <div class="val-to green">99%</div>
+      </div>
+      <div class="improvement">✓ 0% abandonment</div>
+      <div class="desc">Maintained 99% answer rate and 0% abandonment throughout operational hours — consistent, reliable coverage.</div>
+    </div>
+
+  </div>
+
+  <!-- Summary stats -->
+  <div class="section-title">Campaign Totals</div>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="s-icon">📞</div>
+      <div class="s-num">86,293</div>
+      <div class="s-label">Total Contacts Handled</div>
+    </div>
+    <div class="stat-card">
+      <div class="s-icon">🎯</div>
+      <div class="s-num">98.3<span class="s-unit">%</span></div>
+      <div class="s-label">Average Answer Rate<br><small style="color:#9CA3AF">Target: 95%+</small></div>
+    </div>
+    <div class="stat-card">
+      <div class="s-icon">⏱</div>
+      <div class="s-num">161<span class="s-unit">s</span></div>
+      <div class="s-label">Avg Handle Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="s-icon">✅</div>
+      <div class="s-num">98.6<span class="s-unit">%</span></div>
+      <div class="s-label">Contacts Answered<br><small style="color:#9CA3AF">1,201 missed of 87,494</small></div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="section-title">Performance Trends Over Time</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Monthly Answer Rate</h3>
+      <p>Steady improvement from 97.6% to 98.9% — consistently above the 95% target</p>
+      <div class="chart-wrap">
+        <canvas id="answerRateChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Monthly Contacts Handled</h3>
+      <p>Volume managed per month across the campaign period</p>
+      <div class="chart-wrap">
+        <canvas id="contactsChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Missed Contacts Trend</h3>
+      <p>Contacts missed per month — clear downward trend showing operational improvement</p>
+      <div class="chart-wrap">
+        <canvas id="missedChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>DrivenConnect — Operator Onboarding</h3>
+      <p>~450 operators onboarded, contributing ~£300,000 in revenue growth</p>
+      <div class="chart-wrap">
+        <canvas id="onboardingChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly breakdown table -->
+  <div class="table-card">
+    <h3>Month-by-Month Breakdown</h3>
+    <p>Full team KPI data managed under Andile Gumede's leadership</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Contacts Handled</th>
+          <th>Answer Rate</th>
+          <th>Contacts Missed</th>
+          <th>Avg Handle Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="monthlyTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">Andile Gumede · WeMove UK Campaign · Jun 2025 – May 2026 · ahgumede1@gmail.com</div>
+
+<script>
+const months = ["Jun '25","Jul '25","Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26*"];
+const contacts = [8813, 9074, 7932, 9628, 8687, 8429, 7699, 7785, 6867, 7514, 2477, 1388];
+const answerRates = [97.6, 97.7, 98.3, 98.9, 97.8, 98.7, 98.8, 98.8, 98.9, 98.8, 97.6, 97.7];
+const missed = [182, 184, 113, 84, 173, 89, 81, 79, 62, 80, 46, 28];
+const handleTimes = [161, 171, 170, 165, 168, 162, 158, 155, 156, 159, 139, 151];
+
+const chartDefaults = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1F2937', padding: 10, cornerRadius: 6 } },
+  scales: {
+    x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#9CA3AF' } },
+    y: { grid: { color: '#F3F4F6' }, ticks: { font: { size: 10 }, color: '#9CA3AF' } }
+  }
+};
+
+// Answer rate chart
+new Chart(document.getElementById('answerRateChart'), {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [{
+      data: answerRates,
+      borderColor: '#2563EB',
+      backgroundColor: 'rgba(37,99,235,0.08)',
+      fill: true,
+      tension: 0.4,
+      pointBackgroundColor: '#2563EB',
+      pointRadius: 4,
+      borderWidth: 2
+    },{
+      data: Array(12).fill(95),
+      borderColor: '#EF4444',
+      borderDash: [4,4],
+      borderWidth: 1.5,
+      pointRadius: 0,
+      fill: false,
+      label: 'Target 95%'
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      ...chartDefaults.scales,
+      y: { ...chartDefaults.scales.y, min: 94, max: 100, ticks: { callback: v => v + '%', font: { size: 10 }, color: '#9CA3AF' } }
+    }
+  }
+});
+
+// Contacts chart
+new Chart(document.getElementById('contactsChart'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{
+      data: contacts,
+      backgroundColor: months.map((_, i) => i < 10 ? 'rgba(37,99,235,0.7)' : 'rgba(37,99,235,0.3)'),
+      borderRadius: 4
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      ...chartDefaults.scales,
+      y: { ...chartDefaults.scales.y, ticks: { callback: v => v.toLocaleString(), font: { size: 10 }, color: '#9CA3AF' } }
+    }
+  }
+});
+
+// Missed contacts chart
+new Chart(document.getElementById('missedChart'), {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [{
+      data: missed,
+      borderColor: '#10B981',
+      backgroundColor: 'rgba(16,185,129,0.08)',
+      fill: true,
+      tension: 0.4,
+      pointBackgroundColor: '#10B981',
+      pointRadius: 4,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      ...chartDefaults.scales,
+      y: { ...chartDefaults.scales.y, min: 0 }
+    }
+  }
+});
+
+// Onboarding progress (simulated ramp)
+const onboardingMonths = ["Oct '24","Nov '24","Dec '24","Jan '25","Feb '25","Mar '25","Apr '25","May '25"];
+const onboardingCumulative = [40, 95, 160, 240, 320, 390, 430, 450];
+new Chart(document.getElementById('onboardingChart'), {
+  type: 'line',
+  data: {
+    labels: onboardingMonths,
+    datasets: [{
+      data: onboardingCumulative,
+      borderColor: '#F59E0B',
+      backgroundColor: 'rgba(245,158,11,0.08)',
+      fill: true,
+      tension: 0.4,
+      pointBackgroundColor: '#F59E0B',
+      pointRadius: 4,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      ...chartDefaults.scales,
+      y: { ...chartDefaults.scales.y, min: 0, max: 500, ticks: { callback: v => v + ' ops', font: { size: 10 }, color: '#9CA3AF' } }
+    }
+  }
+});
+
+// Monthly table
+const tbody = document.getElementById('monthlyTable');
+const maxContacts = Math.max(...contacts);
+months.forEach((m, i) => {
+  const ar = answerRates[i];
+  const isPartial = m.includes('*');
+  const status = isPartial ? '<span class="pill amber">Partial</span>' : ar >= 98.5 ? '<span class="pill green">Excellent</span>' : '<span class="pill blue">On Target</span>';
+  const barWidth = Math.round((contacts[i] / maxContacts) * 100);
+  tbody.innerHTML += `
+    <tr>
+      <td><strong>${m}</strong></td>
+      <td>
+        <div class="bar-wrap">
+          <div class="mini-bar" style="width:${barWidth}px;max-width:80px"></div>
+          <div class="bar-num">${contacts[i].toLocaleString()}</div>
+        </div>
+      </td>
+      <td><strong>${ar}%</strong></td>
+      <td>${missed[i]}</td>
+      <td>${handleTimes[i]}s</td>
+      <td>${status}</td>
+    </tr>`;
+});
+</script>
+</body>
+</html>
