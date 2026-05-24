@@ -3,6 +3,78 @@
    Clean, professional, fully responsive. Light + Dark themes.
    ========================================================================= */
 
+/* ----- Tools Belt (infinite scroll marquee) ----- */
+.tools-belt {
+  overflow: hidden;
+  background: var(--clr-surface, #f1f5f9);
+  border-top: 1px solid var(--clr-border, #e2e8f0);
+  border-bottom: 1px solid var(--clr-border, #e2e8f0);
+  padding: 14px 0;
+  white-space: nowrap;
+  position: relative;
+  /* Fade edges */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.tools-belt__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.tools-belt:hover .tools-belt__track {
+  animation-play-state: paused;
+}
+
+.tools-belt__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--clr-text-2, #475569);
+  padding: 0 20px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.tools-belt__item:hover {
+  color: var(--clr-accent, #2563EB);
+}
+
+.tools-belt__item i {
+  font-size: 15px;
+  color: var(--clr-accent, #2563EB);
+  opacity: 0.8;
+}
+
+.tools-belt__sep {
+  font-size: 10px;
+  color: var(--clr-accent, #2563EB);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .tools-belt {
+  background: var(--clr-surface, #1e293b);
+  border-color: var(--clr-border, #334155);
+}
+[data-theme="dark"] .tools-belt__item {
+  color: var(--clr-text-2, #94a3b8);
+}
+[data-theme="dark"] .tools-belt__item:hover {
+  color: #60a5fa;
+}
+
 /* ----- Reset / base ----- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
