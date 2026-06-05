@@ -1062,8 +1062,11 @@ ul { list-style: none; }
 /* ===== TYPING ANIMATION FIX ===== */
 .typing-wrapper {
   display: inline-block;
-  min-width: 280px;
-  min-height: 1.2em;
+  min-width: 320px;
   vertical-align: bottom;
   white-space: nowrap;
+}
+
+.hero__title {
+  min-height: 2.4em;
 }
