@@ -423,7 +423,7 @@ ul { list-style: none; }
 /* Photo */
 .hero__photo {
   position: relative;
-  justify-self: center;
+  justify-self: end;
   width: 100%;
   max-width: 360px;
 }
