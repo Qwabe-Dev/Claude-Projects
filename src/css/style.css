@@ -1054,19 +1054,19 @@ ul { list-style: none; }
 }
 
 /* ----- Print ----- */
-@media print {
-  .nav, .back-to-top, .scroll-progress, .hero__cta, .filters, .contact__form, .footer__links { display: none !important; }
-  body { background: #fff; color: #000; }
-  a { color: #000; text-decoration: underline; }
-}
 /* ===== TYPING ANIMATION FIX ===== */
 .typing-wrapper {
   display: inline-block;
-  min-width: 320px;
   vertical-align: bottom;
   white-space: nowrap;
 }
 
 .hero__title {
   min-height: 2.4em !important;
+}
+
+@media (max-width: 1400px) {
+  .hero__title {
+    font-size: clamp(2rem, 1.2rem + 2.8vw, 3rem) !important;
+  }
 }
