@@ -1068,5 +1068,5 @@ ul { list-style: none; }
 }
 
 .hero__title {
-  min-height: 2.4em;
+  min-height: 2.4em !important;
 }
