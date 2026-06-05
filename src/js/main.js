@@ -182,7 +182,7 @@
     if (!el) return;
 
     var words = [
-      'Customer Success Manager',
+      'CS Manager',
       'Call Centre Manager',
       'Account Operations Lead',
       'Team Leader & Coach',
