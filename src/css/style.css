@@ -345,6 +345,7 @@ ul { list-style: none; }
   font-weight: 800;
   margin-top: 18px;
   color: var(--text);
+  min-height: 2.3em; /* locks height — prevents collapse during typing */
 }
 .wave { display: inline-block; animation: wave 2.4s ease-in-out infinite; transform-origin: 70% 80%; }
 @keyframes wave {
