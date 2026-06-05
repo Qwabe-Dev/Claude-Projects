@@ -213,7 +213,7 @@
       } else {
         charIndex--;
         el.textContent = current.slice(0, charIndex);
-        if (charIndex === 0) {
+        if (charIndex === 1) {
           deleting = false;
           wordIndex = (wordIndex + 1) % words.length;
           return setTimeout(tick, pauseStart);
